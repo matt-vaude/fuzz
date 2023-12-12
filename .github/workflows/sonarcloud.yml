@@ -20,6 +20,7 @@ jobs:
           # Télécharger AFL
           wget http://lcamtuf.coredump.cx/afl/releases/afl-latest.tgz
           tar -xzf afl-latest.tgz
+          cd afl-2.52b
           ls
 
       - name: Build 
