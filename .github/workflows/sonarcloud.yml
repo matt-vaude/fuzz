@@ -21,8 +21,7 @@ jobs:
           wget http://lcamtuf.coredump.cx/afl/releases/afl-latest.tgz
           tar -xzf afl-latest.tgz
           ls
-          cd afl-latest
-          make && sudo make install
+
       - name: Build 
         run: |
           make
