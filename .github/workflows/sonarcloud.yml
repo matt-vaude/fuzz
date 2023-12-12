@@ -26,6 +26,11 @@ jobs:
       - name: Build 
         run: |
           make
+      - name: Download SonarCloud Scanner
+        run: |
+          curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+          sudo apt-get install -y nodejs
+          sudo npm install -g sonarcloud
 
       - name: SonarCloud Scan
         run: sonar-scanner -Dsonar.login=$SONAR_TOKEN -Dsonar.organization=matt-vaude -Dsonar.projectKey=fuzz -Dsonar.sources=. -Dsonar.cfamily.build-wrapper-output=build
