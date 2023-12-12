@@ -21,7 +21,7 @@ jobs:
           wget http://lcamtuf.coredump.cx/afl/releases/afl-latest.tgz
           tar -xzf afl-latest.tgz
           cd afl-2.52b
-          make && sudo make install
+          sudo make install
 
       - name: Install sonar-scanner and build-wrapper
         uses: SonarSource/sonarcloud-github-c-cpp@v2
@@ -31,6 +31,8 @@ jobs:
 
       - name: Scan folder
         run: | 
+          ls -i
+          cd afl-2.52b
           ls -i
       
       ##- name: SonarCloud Scan
