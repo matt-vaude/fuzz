@@ -37,7 +37,8 @@ jobs:
 
       - name: Scan folder
         run: | 
-          ls -i
+          cd build_wrapper_output_directory
+          ls
 
       
       ##- name: SonarCloud Scan
