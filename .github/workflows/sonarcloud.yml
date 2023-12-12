@@ -26,7 +26,7 @@ jobs:
           make && sudo make install
 
       - name: Install sonar-scanner and build-wrapper
-        uses: SonarSource/sonarcloud-github-action@v3
+        uses: SonarSource/sonarcloud-github-action@v2
         with:
           organization: matt-vaude # Remplacez par votre organisation SonarCloud
           token: ${{ secrets.SONAR_TOKEN }} # Utilisez votre jeton SonarCloud
