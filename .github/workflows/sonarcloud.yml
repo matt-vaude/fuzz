@@ -31,7 +31,7 @@ jobs:
 
       - name: Scan folder
         run: | 
-          ls-i
+          ls -i
       
       ##- name: SonarCloud Scan
      ##   run: sonar-scanner -Dsonar.login=$SONAR_TOKEN -Dsonar.organization=matt-vaude -Dsonar.projectKey=fuzzanalyse -Dsonar.sources=. -Dsonar.cfamily.build-wrapper-output=make
