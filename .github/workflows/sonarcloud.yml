@@ -30,12 +30,13 @@ jobs:
           token: ${{ secrets.SONAR_TOKEN }} # Utilisez votre jeton SonarCloud
 
       - name: Scan folder
-        run: |
-          cd ../
-          ls
-          cd build_wrapper_output_directory
-          ls
+        run: | 
+          ls-i
+      
+      ##- name: SonarCloud Scan
+     ##   run: sonar-scanner -Dsonar.login=$SONAR_TOKEN -Dsonar.organization=matt-vaude -Dsonar.projectKey=fuzzanalyse -Dsonar.sources=. -Dsonar.cfamily.build-wrapper-output=make
 
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
+
+       ## env:
+       ##   SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        ##  GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
