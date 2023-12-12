@@ -10,6 +10,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      BUILD_WRAPPER_OUT_DIR: build_wrapper_output_directory
 
     steps:
       - name: Checkout code
@@ -23,17 +25,16 @@ jobs:
           cd afl-2.52b
           make && sudo make install
 
-      - name: Build 
-        run: |
-          make
-      - name: Download SonarCloud Scanner
-        run: |
-          curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-          sudo apt-get install -y nodejs
-          sudo npm install -g sonarcloud
+      - name: Install sonar-scanner and build-wrapper
+        uses: SonarSource/sonarcloud-github-action@v3
+        with:
+          organization: matt-vaude # Remplacez par votre organisation SonarCloud
+          token: ${{ secrets.SONAR_TOKEN }} # Utilisez votre jeton SonarCloud
+
 
       - name: SonarCloud Scan
-        run: sonar-scanner -Dsonar.login=$SONAR_TOKEN -Dsonar.organization=matt-vaude -Dsonar.projectKey=fuzz -Dsonar.sources=. -Dsonar.cfamily.build-wrapper-output=build
+        run: sonar-scanner -Dsonar.login=$SONAR_TOKEN -Dsonar.organization=matt-vaude -Dsonar.projectKey=fuzz -Dsonar.sources=. -Dsonar.cfamily.build-wrapper-output=make
 
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
