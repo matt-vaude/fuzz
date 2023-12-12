@@ -17,7 +17,7 @@ jobs:
 
       - name: Scan before AFL
         run: |
-         sudo ls -i
+         make
         
       - name: Build with AFL
         run: |
