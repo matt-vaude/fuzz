@@ -15,9 +15,12 @@ jobs:
 
     steps:
 
-      - name: Build with AFL
+      - name: Scan before AFL
         run: |
           ls -i
+        
+      - name: Build with AFL
+        run: |
           # Télécharger AFL
           wget http://lcamtuf.coredump.cx/afl/releases/afl-latest.tgz
           tar -xzf afl-latest.tgz
@@ -33,8 +36,7 @@ jobs:
       - name: Scan folder
         run: | 
           ls -i
-          cd afl-2.52b
-          ls -i
+
       
       ##- name: SonarCloud Scan
      ##   run: sonar-scanner -Dsonar.login=$SONAR_TOKEN -Dsonar.organization=matt-vaude -Dsonar.projectKey=fuzzanalyse -Dsonar.sources=. -Dsonar.cfamily.build-wrapper-output=make
