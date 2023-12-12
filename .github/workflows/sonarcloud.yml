@@ -46,7 +46,7 @@ jobs:
           
 
       - name: SonarCloud Scan
-        run: sonar-scanner -Dsonar.login=$SONAR_TOKEN -Dsonar.organization=matt-vaude -Dsonar.projectKey=fuzzanalyse -Dsonar.sources=. -Dsonar.cfamily.build-wrapper-output=BUILD_WRAPPER_OUT_DIR
+        run: sonar-scanner -Dsonar.login=$SONAR_TOKEN -Dsonar.organization=matt-vaude -Dsonar.projectKey=fuzzanalyse -Dsonar.sources=. -Dsonar.cfamily.build-wrapper-output=${{ env.BUILD_WRAPPER_OUT_DIR }}
         env:
            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
            GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
