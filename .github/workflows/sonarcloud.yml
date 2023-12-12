@@ -29,9 +29,11 @@ jobs:
           organization: matt-vaude # Remplacez par votre organisation SonarCloud
           token: ${{ secrets.SONAR_TOKEN }} # Utilisez votre jeton SonarCloud
 
-
-      - name: SonarCloud Scan
-        run: sonar-scanner -Dsonar.login=$SONAR_TOKEN -Dsonar.organization=matt-vaude -Dsonar.projectKey=fuzzanalyse -Dsonar.sources=. -Dsonar.cfamily.build-wrapper-output=make
+      - name: Scan folder
+        run: |
+          ls
+          cd build_wrapper_output_directory
+          ls
 
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
