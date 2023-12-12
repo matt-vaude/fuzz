@@ -22,9 +22,8 @@ jobs:
           tar -xzf afl-latest.tgz
           cd afl-*
           make && sudo make install
-
-          # Compiler Fuzzgoat
-          cd ../
+      - name: Build 
+        run: |
           make
 
       - name: Run AFL
