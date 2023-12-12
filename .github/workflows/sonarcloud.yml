@@ -27,10 +27,6 @@ jobs:
         run: |
           make
 
-      - name: Run AFL
-        run: |
-          afl-fuzz -i in -o out ./fuzz @@
-
       - name: SonarCloud Scan
         run: sonar-scanner -Dsonar.login=$SONAR_TOKEN -Dsonar.organization=matt-vaude -Dsonar.projectKey=fuzz -Dsonar.sources=. -Dsonar.cfamily.build-wrapper-output=build
 
