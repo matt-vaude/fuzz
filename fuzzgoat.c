@@ -1086,10 +1086,12 @@ void leakingFunction() {
     // Opérations sur ptr sans libérer la mémoire
     // Exemple : oubli d'appeler free(ptr);
 }
-void leakingFunction() {
-    char *ptr = malloc(10 * sizeof(char));
-    // Opérations sur ptr sans libérer la mémoire
-    // Exemple : oubli d'appeler free(ptr);
+void loopMemoryLeak() {
+    int *ptr;
+    for (int i = 0; i < 10; i++) {
+        ptr = malloc(sizeof(int));
+    }
+    // Pas de libération de la mémoire allouée dans la boucle
 }
 
 
