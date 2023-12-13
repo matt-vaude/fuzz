@@ -1073,6 +1073,28 @@ json_value * json_parse (const json_char * json, size_t length)
    return json_parse_ex (&settings, json, length, 0);
 }
 
+void memoryLeak() {
+    int *ptr = malloc(sizeof(int));
+    // Pas de libération de la mémoire allouée avec malloc
+}
+void reassignmentMemoryLeak() {
+    int *ptr = malloc(sizeof(int));
+    ptr = malloc(sizeof(int)); // Réaffectation sans libérer la mémoire précédente
+}
+void leakingFunction() {
+    char *ptr = malloc(10 * sizeof(char));
+    // Opérations sur ptr sans libérer la mémoire
+    // Exemple : oubli d'appeler free(ptr);
+}
+void leakingFunction() {
+    char *ptr = malloc(10 * sizeof(char));
+    // Opérations sur ptr sans libérer la mémoire
+    // Exemple : oubli d'appeler free(ptr);
+}
+
+
+
+
 void json_value_free (json_value * value)
 {
    json_settings settings = { 0 };
